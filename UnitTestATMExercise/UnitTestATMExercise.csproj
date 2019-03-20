@@ -79,6 +79,7 @@
     <Compile Include="UnitTestCalculator.cs" />
     <Compile Include="UnitTestDecoder.cs" />
     <Compile Include="UnitTestPrint.cs" />
+    <Compile Include="UnitTestSeperation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
