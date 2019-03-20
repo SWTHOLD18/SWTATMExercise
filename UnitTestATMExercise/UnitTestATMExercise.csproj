@@ -64,7 +64,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTestAirplaneDirection.cs" />
     <Compile Include="UnitTestAirspace.cs" />
     <Compile Include="UnitTestATMExercise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
