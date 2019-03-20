@@ -9,10 +9,7 @@ namespace ATMExercise
 {
     class Seperation
     {
-        public Seperation()
-        {
-
-        }
+       
         public Airplane Airplane { get; set; }
         public void newTrack(Airplane airplane)
         {
@@ -33,6 +30,10 @@ namespace ATMExercise
                         con.Add(airplaneList[j].Tag);
                         con.Add(airplaneList[i].Timestamp.ToString());
 
+                    }
+                    else
+                    {
+                        con.Clear();
                     }
                 }
             }
