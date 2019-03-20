@@ -48,6 +48,7 @@ namespace UnitTestATMExercise
             //Unit under test/uut
             ICalculator calculator = new Calculator();
 
+            calculator.NewPositions(airplanesList);
             var actual = calculator.GetDirection(airplanePing2);
 
             Assert.AreEqual(actual, expected);
@@ -66,6 +67,7 @@ namespace UnitTestATMExercise
 
         private ICalculator _calculator;
 
+        /*
         [SetUp]
         public void Setup()
         {
@@ -73,6 +75,7 @@ namespace UnitTestATMExercise
             string timeStamp2 = "20151006213457001";
             _airplane1 = new Airplane("ACR101", 40000, 40000, 8000, "20151006213456001");
         }
+        */
 
         // Der skal laves således at den ikke kan tage negativ tid eller hvis tiden er 0
 
