@@ -7,7 +7,7 @@ using ATMExercise;
 
 namespace UnitTestATMExercise
 {
-    public class mockPrint : IPrint
+    public class MockPrint : IPrint
     {
         public int numCalls = 0;
 

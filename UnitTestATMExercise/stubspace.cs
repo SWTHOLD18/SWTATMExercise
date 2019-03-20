@@ -7,11 +7,11 @@ using ATMExercise;
 
 namespace UnitTestATMExercise
 {
-    class stubspace : IAirspace
+    class Stubspace : IAirspace
     {
         private int numtrue;
 
-        public stubspace(int numtrue)
+        public Stubspace(int numtrue)
         {
             this.numtrue = numtrue;
         }

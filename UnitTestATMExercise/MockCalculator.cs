@@ -7,13 +7,13 @@ using ATMExercise;
 
 namespace UnitTestATMExercise
 {
-    public class mockCalculator : ICalculator
+    public class MockCalculator : ICalculator
     {
         public int newposCalls;
         public int getdirCalls;
         public int calcspdCalls;
 
-        public mockCalculator()
+        public MockCalculator()
         {
             newposCalls = 0;
             getdirCalls = 0;
