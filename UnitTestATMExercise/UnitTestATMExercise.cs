@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using ATMExercise;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSubstitute;
 using NUnit.Framework;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
