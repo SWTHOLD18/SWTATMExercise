@@ -18,24 +18,24 @@ namespace ATMExercise
         public Decoder(ITransponderReceiver receiver)
         {
             this.receiver = receiver;
-            this.receiver.TransponderDataReady += DecodeReadyData;
+            this.receiver.TransponderDataReady += ReceiverOnTransponderDataReady;
         }
 
         //fake inject constructer
         public Decoder(ITransponderReceiver receiver, ICalculator calc, IPrint printer, IAirspace space)
         {
             this.receiver = receiver;
-            this.receiver.TransponderDataReady += DecodeReadyData;
+            this.receiver.TransponderDataReady += ReceiverOnTransponderDataReady;
             this.calc = calc;
             this.printer = printer;
             this.space = space;
         }
 
 
-        private void DecodeReadyData(object sender, RawTransponderDataEventArgs arg)
+        private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
             airplaneList.Clear();
-            foreach (var data in arg.TransponderData)
+            foreach (var data in e.TransponderData)
             {
                 string[] plane = data.Split(';');
                 string tag = plane[0];
