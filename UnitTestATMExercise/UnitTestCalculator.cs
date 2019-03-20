@@ -34,22 +34,22 @@ namespace UnitTestATMExercise
         // Der skal laves således at den ikke kan tage negativ tid eller hvis tiden er 0
 
         // Plane moved 100 m east in 1000 milliseconds, 40000 to 40100, expected 100 meter/second
-        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR101", 40100, 40000, 8000, "20151006213457001",
-            100)]
+        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR101", 40100, 40000, 8000, "20151006213457001", 100)]
         // Plane moved 100 m west in 1000 milliseconds (backwards), 40000 to 39900, expected 100 meter/second
-        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR101", 39900, 40000, 8000, "20151006213457001",
-            100)]
+        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR101", 39900, 40000, 8000, "20151006213457001", 100)]
+
+        // Plane moved 100 m north in 1000 milliseconds, 40000 to 40100, expected 100 meter/second
+        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR101", 40000, 40100, 8000, "20151006213457001", 100)]
+        // Plane moved 100 m south in 1000 milliseconds (backwards), 40100 to 40000, expected 100 meter/second
+        [TestCase("ACR101", 40000, 40100, 8000, "20151006213456001", "ACR101", 40000, 40000, 8000, "20151006213457001", 100)]
 
         // Plane not moved ***      Time need to be checked if the plane hasn't moved           *******
-        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR101", 40000, 40000, 8000, "20151006213457001",
-            0)]
+        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR101", 40000, 40000, 8000, "20151006213457001", 0)]
 
-        // Plane moved 300 m on x-axis and 400 m in y-akis, distance moved = 500 m in one second, 40000 to 40300 and 40000 to 40400, expected 500 meter/second
-        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR101", 40300, 40400, 8000, "20151006213457001",
-            500)]
+        // Plane moved 300 m on x-axis and 400 m in y-akis, distance moved = 500 m in two seconds, 40000 to 40300 and 40000 to 40400, expected 250 meter/second
+        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR101", 40300, 40400, 8000, "20151006213458001", 250)]
         // Plane moved 300 m on x-axis and 400 m in y-akis (backwards), distance moved is 500 m in one second, 40300 to 40000 and 40400 to 40000, expected 500 meter/second
-        [TestCase("ACR101", 40300, 40400, 8000, "20151006213456001", "ACR101", 40000, 40000, 8000, "20151006213457001",
-            500)]
+        [TestCase("ACR101", 40300, 40400, 8000, "20151006213456001", "ACR101", 40000, 40000, 8000, "20151006213458001", 250)]
         public void CalculateSpeed_AirplaneFoundInList_ReturnsSpeed(string plane1Tag, int plane1X, int plane1Y,
             int plane1Altitude, string plane1Timestamp,
             string plane2Tag, int plane2X, int plane2Y, int plane2Altitude, string plane2Timestamp, double result)
