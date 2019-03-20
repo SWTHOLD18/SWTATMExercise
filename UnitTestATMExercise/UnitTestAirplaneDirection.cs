@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 using System.Threading.Tasks;
+using NUnit.Framework;
+using ATMExercise;
 
 namespace UnitTestATMExercise
 {
@@ -25,7 +28,8 @@ namespace UnitTestATMExercise
         [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001",
             "ACR101", 20000, 40000, 8000, "20151006213457001", 270)]
 
-        public void AirplaneDirection(string plane1Tag, int plane1X, int plane1Y, int plane1Alitude, string plane1Timestamp,
+        public void AirplaneDirection(string plane1Tag, int plane1X, int plane1Y, int plane1Alitude,
+            string plane1Timestamp,
             string plane2Tag, int plane2X, int plane2Y, int plane2Alitude, string plane2Timestamp, double expected)
         {
             string format = "yyyyMMddHHmmssfff";
@@ -49,3 +53,4 @@ namespace UnitTestATMExercise
             Assert.AreEqual(actual, expected);
         }
     }
+}
