@@ -17,17 +17,17 @@ namespace UnitTestATMExercise
     {
         private ITransponderReceiver _fakeTransponderReceiver;
         private Decoder uut;
-        private stubspace air;
-        private mockPrint print;
-        private mockCalculator calc;
+        private Stubspace air;
+        private MockPrint print;
+        private MockCalculator calc;
 
         [SetUp]
         public void setup()
         {
             _fakeTransponderReceiver = Substitute.For<ITransponderReceiver>();
-            air = new stubspace(0);
-            print = new mockPrint();
-            calc = new mockCalculator();
+            air = new Stubspace(0);
+            print = new MockPrint();
+            calc = new MockCalculator();
             uut=new Decoder(_fakeTransponderReceiver, calc, print, air);
         }
 

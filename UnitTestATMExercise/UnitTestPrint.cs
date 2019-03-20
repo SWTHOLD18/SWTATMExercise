@@ -17,7 +17,7 @@ namespace UnitTestATMExercise
 
         //Airplane not within Airspace
         [TestCase("ACR102", 90500, 15000, 1500, "20151006213456456", 0, 0)]
-        public void TestGetDirectionCalled(string tag, int x, int y, int altitude, string timestamp, int numtrue, bool expected)
+        public void TestGetDirectionCalled(string tag, int x, int y, int altitude, string timestamp, int numtrue, int expected)
         {
             string format = "yyyyMMddHHmmssfff";
             DateTime time = DateTime.ParseExact(timestamp, format, CultureInfo.InvariantCulture);
@@ -43,7 +43,7 @@ namespace UnitTestATMExercise
 
         //Airplane not within Airspace
         [TestCase("ACR102", 90500, 15000, 1500, "20151006213456456", 0, 0)]
-        public void TestCalucalteSpeedCalled(string tag, int x, int y, int altitude, string timestamp, int numtrue, bool expected)
+        public void TestCalucalteSpeedCalled(string tag, int x, int y, int altitude, string timestamp, int numtrue, int expected)
         {
             string format = "yyyyMMddHHmmssfff";
             DateTime time = DateTime.ParseExact(timestamp, format, CultureInfo.InvariantCulture);
