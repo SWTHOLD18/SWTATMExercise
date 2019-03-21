@@ -6,27 +6,27 @@ namespace ATMExercise
 {
     public class Calculator : ICalculator
     {
-        private List<Airplane> oldaAirplaneList;
+        public List<Airplane> OldaAirplaneList { get; private set; }
         
         public Calculator()
         {
-            oldaAirplaneList = new List<Airplane>();            
+            OldaAirplaneList = new List<Airplane>();            
         }
 
         public void NewPositions(List<Airplane> newAirplaneList)
         {
             // Make room for new airplanes, overwrite
-            oldaAirplaneList.Clear();
+            OldaAirplaneList.Clear();
             foreach (var plane in newAirplaneList)
             {
                 // Add planes in the oldList
-                oldaAirplaneList.Add(plane);
+                OldaAirplaneList.Add(plane);
             }
         }
 
         public double GetDirection(Airplane newAirplane)
         {
-            Airplane oldAirplane = oldaAirplaneList.Find(a => a.Tag == newAirplane.Tag);
+            Airplane oldAirplane = OldaAirplaneList.Find(a => a.Tag == newAirplane.Tag);
 
             // Check if airplane is in list
             if (oldAirplane == null)
@@ -60,7 +60,7 @@ namespace ATMExercise
         public double CalculateSpeed(Airplane newAirplane)
         {
             // Find oldAirplane with corresponding tag
-            Airplane oldAirplane = oldaAirplaneList.Find(a => a.Tag == newAirplane.Tag);
+            Airplane oldAirplane = OldaAirplaneList.Find(a => a.Tag == newAirplane.Tag);
 
             // Check if airplane is in list
             if (oldAirplane == null)
