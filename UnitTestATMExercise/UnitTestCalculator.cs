@@ -184,7 +184,7 @@ namespace UnitTestATMExercise
             Assert.AreNotEqual(airplane2, calculator.OldaAirplaneList[0]);
         }
 
-        // Test plane. Airplane is not found, since it is not added
+        // Test plane. Airplane is not found, since it is not added (calculateSpeed)
         [Test]
         public void CalculateSpeed_AirplaneIsNotFoundInList_Returns0()
         {
@@ -206,6 +206,7 @@ namespace UnitTestATMExercise
             Assert.AreEqual(0,actual);
         }
 
+        // Test plane. Airplane is not found, since it is not added (getDirection)
         [Test]
         public void GetDirection_AirplaneIsNotFoundInList_Returns0()
         {
