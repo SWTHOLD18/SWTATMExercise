@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>670</x>
+      <y>140</y>
+      <w>200</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;class&gt;&gt;
+TransponderReceiver
+--
+-RawTransponderDataEventArgs: String
+--
+-SendData(RawTransponderDataEventArgs): Event</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>605</x>
+      <y>230</y>
+      <w>320</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;class&gt;&gt;
+Decoder
+--
+-receiver: ITransponderReceiver
+-airplaneList: List&lt;Airplane&gt;
+-calculator: ICalculator
+-printer: IPrint
+-airspace: IAirspace
+--
+-ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e): Void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>340</y>
+      <w>105</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;class&gt;&gt;
+Airplane
+--
+-_tag: String
+-_x_coordinate: Int
+-_y_coordinate: Int
+-_altitude: Int
+-_timestamp: DateTime
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1295</x>
+      <y>125</y>
+      <w>125</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;class&gt;&gt;
+Log
+--
+
+--
+-PrintToLog(List&lt;string&gt;): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>175</y>
+      <w>370</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;inderface&gt;&gt;
+IPrint
+--
+
+--
++PrintAirplaneWithSpeedAndDirection(Airplane airplane, ICalculator calculator, IAirspace Airspace): Void
++PrintSeperation(List&lt;string&gt;): Void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>375</y>
+      <w>95</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>675</x>
+      <y>345</y>
+      <w>180</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IAirspace
+--
+
+--
++WithInAirspace(Airplane airplane): bool
++CreatePointForAirplane(Airplane airplane): IPoint </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>405</y>
+      <w>15</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>675</x>
+      <y>475</y>
+      <w>180</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;class&gt;&gt;
+Airspace
+--
+-pointMin: IPoint
+-pointMax: IPoint
+--
++WithInAirspace(Airplane airplane): bool
++CreatePointForAirplane(Airplane airplane): IPoint </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>970</x>
+      <y>430</y>
+      <w>15</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>920</x>
+      <y>475</y>
+      <w>105</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IPoint
+--
+
+--
++SetX(): Int
++GetX(): Int
++SetY(): Int
++GetY(): Int
++SetZ(): Int
++GetZ(): Int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>920</x>
+      <y>335</y>
+      <w>105</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;class&gt;&gt;
+Point
+--
+-_x: int
+-_y: int
+-_z: int
+--
++SetX(): Int
++GetX(): Int
++SetY(): Int
++GetY(): Int
++SetZ(): Int
++GetZ(): Int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>395</x>
+      <y>175</y>
+      <w>195</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+ICalculator
+--
+
+--
++NewPositions(List&lt;Airplane&gt; newAirplaneList): Void
++GetDirection(Airplane newPosition): Double
++CalculateSpeed(Airplane newPosition): Double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>395</x>
+      <y>60</y>
+      <w>195</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;class&gt;&gt;
+Calculator
+--
+-OldaAirplaneList: List&lt;Airplane&gt;
+--
++NewPositions(List&lt;Airplane&gt; newAirplaneList): Void
++GetDirection(Airplane newPosition): Double
++CalculateSpeed(Airplane newPosition): Double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>310</y>
+      <w>15</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>120</y>
+      <w>15</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>235</y>
+      <w>435</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;850.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>850</x>
+      <y>505</y>
+      <w>80</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>985</x>
+      <y>230</y>
+      <w>230</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+ISeperation
+--
+
+--
++NewTrack(Airplane airplane): Void
++ConditionDetected(List&lt;Airplane&gt; airplaneList): List&lt;string&gt;
++UpdateCondition(List&lt;Airplane&gt; airplaneList): Void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>985</x>
+      <y>115</y>
+      <w>230</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;class&gt;&gt;
+Seperation
+--
+-OldaAirplaneList: List&lt;Airplane&gt;
+--
++SetAirplane(): Airplane
++GetAirplane(): Airplane
++NewTrack(Airplane airplane): Void
++ConditionDetected(List&lt;Airplane&gt; airplaneList): List&lt;string&gt;
++UpdateCondition(List&lt;Airplane&gt; airplaneList): Void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1095</x>
+      <y>190</y>
+      <w>15</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>265</y>
+      <w>70</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>60</y>
+      <w>370</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;class&gt;&gt;
+Print
+--
+
+--
++PrintAirplaneWithSpeedAndDirection(Airplane airplane, ICalculator calculator, IAirspace Airspace): Void
++PrintSeperation(List&lt;string&gt;): Void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>120</y>
+      <w>15</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1210</x>
+      <y>260</y>
+      <w>90</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1290</x>
+      <y>235</y>
+      <w>125</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+ILog
+--
+
+--
+-PrintToLog(List&lt;string&gt;): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>485</x>
+      <y>235</y>
+      <w>15</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>235</y>
+      <w>930</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;680.0;1840.0;680.0;1840.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>200</y>
+      <w>15</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1350</x>
+      <y>190</y>
+      <w>15</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
