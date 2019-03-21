@@ -30,7 +30,7 @@ namespace ATMExercise
             Airplane oldAirplane = OldaAirplaneList.Find(a => a.Tag == newAirplane.Tag);
 
             // Check if airplane is in list
-            if (oldAirplane == null)
+            if (!OldaAirplaneList.Contains(oldAirplane))
             {
                 return 0;
             }
@@ -64,7 +64,7 @@ namespace ATMExercise
             Airplane oldAirplane = OldaAirplaneList.Find(a => a.Tag == newAirplane.Tag);
 
             // Check if airplane is in list
-            if (oldAirplane == null)
+            if (!OldaAirplaneList.Contains(oldAirplane))
             {
                 return 0;
             }
