@@ -227,6 +227,25 @@ namespace UnitTestATMExercise
             Assert.AreEqual(0, actual);
         }
 
+        [Test]
+        public void GetDirection_OldListIsNull_Returns0()
+        {
+            string format = "yyyyMMddHHmmssfff";
+            DateTime plane1Time = DateTime.ParseExact("20151006213456001", format, CultureInfo.InvariantCulture);
+
+            var airplane1 = new Airplane("ACR101", 40000, 40000, 8000, plane1Time);
+            var airplane2 = new Airplane("ACR201", 40000, 40000, 8000, plane1Time);
+
+            List<Airplane> airplaneList = new List<Airplane>();
+
+            //Unit under test/uut
+            Calculator calculator = new Calculator();
+
+            double actual = calculator.GetDirection(airplane1);
+
+            Assert.AreEqual(0, actual);
+        }
+
 
     }
 }
