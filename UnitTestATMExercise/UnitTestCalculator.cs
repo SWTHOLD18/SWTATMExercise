@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using ATMExercise;
+using NSubstitute;
 
 namespace UnitTestATMExercise
 {
@@ -62,7 +63,7 @@ namespace UnitTestATMExercise
             airplaneList.Add(airplane1);
 
             //Unit under test/uut
-            ICalculator calculator = new Calculator();
+            Calculator calculator = new Calculator();
 
             calculator.NewPositions(airplaneList);
 
@@ -109,12 +110,78 @@ namespace UnitTestATMExercise
             airplanesList.Add(airplane1);
 
             //Unit under test/uut
-            ICalculator calculator = new Calculator();
+            Calculator calculator = new Calculator();
 
             calculator.NewPositions(airplanesList);
             var actual = calculator.GetDirection(airplane2);
 
             Assert.AreEqual(actual, expected);
+        }
+
+        // Test list. Plane is found in the list
+        [Test]
+        public void NewPositions_AirplaneIsFoundInList_ReturnsCorrectAirplane()
+        {
+            string format = "yyyyMMddHHmmssfff";
+            DateTime plane1Time = DateTime.ParseExact("20151006213456001", format, CultureInfo.InvariantCulture);
+            
+            var airplane1 = new Airplane("ACR101", 40000, 40000, 8000,plane1Time);
+
+            List<Airplane> airplaneList = new List<Airplane>();
+
+            airplaneList.Add(airplane1);
+
+            //Unit under test/uut
+            Calculator calculator = new Calculator();
+
+            calculator.NewPositions(airplaneList);
+
+            Assert.AreEqual(airplane1, calculator.OldaAirplaneList[0]);
+        }
+
+        // Test plane. Plane is found in the list, 2 airplanes
+        [Test]
+        public void NewPositions_SecondAirplaneIsFoundInList_ReturnsCorrectAirplane()
+        {
+            string format = "yyyyMMddHHmmssfff";
+            DateTime plane1Time = DateTime.ParseExact("20151006213456001", format, CultureInfo.InvariantCulture);
+
+            var airplane1 = new Airplane("ACR101", 40000, 40000, 8000, plane1Time);
+            var airplane2 = new Airplane("ACR201", 40000, 40000, 8000, plane1Time);
+
+            List<Airplane> airplaneList = new List<Airplane>();
+
+            airplaneList.Add(airplane1);
+            airplaneList.Add(airplane2);
+
+            //Unit under test/uut
+            Calculator calculator = new Calculator();
+
+            calculator.NewPositions(airplaneList);
+
+            Assert.AreEqual(airplane2, calculator.OldaAirplaneList[1]);
+        }
+
+        // Test plane. Airplane is not found, since it is not added
+        [Test]
+        public void NewPositions_AirplaneIsNotFoundInList_ReturnsFalse()
+        {
+            string format = "yyyyMMddHHmmssfff";
+            DateTime plane1Time = DateTime.ParseExact("20151006213456001", format, CultureInfo.InvariantCulture);
+
+            var airplane1 = new Airplane("ACR101", 40000, 40000, 8000, plane1Time);
+            var airplane2 = new Airplane("ACR201", 40000, 40000, 8000, plane1Time);
+
+            List<Airplane> airplaneList = new List<Airplane>();
+
+            airplaneList.Add(airplane1);
+
+            //Unit under test/uut
+            Calculator calculator = new Calculator();
+
+            calculator.NewPositions(airplaneList);
+
+            Assert.AreNotEqual(airplane2, calculator.OldaAirplaneList[0]);
         }
 
 

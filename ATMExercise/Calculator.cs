@@ -6,7 +6,8 @@ namespace ATMExercise
 {
     public class Calculator : ICalculator
     {
-        public List<Airplane> OldaAirplaneList { get; private set; }
+
+        public List<Airplane> OldaAirplaneList { get;  private set; }
         
         public Calculator()
         {
