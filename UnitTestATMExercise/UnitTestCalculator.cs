@@ -184,6 +184,49 @@ namespace UnitTestATMExercise
             Assert.AreNotEqual(airplane2, calculator.OldaAirplaneList[0]);
         }
 
+        // Test plane. Airplane is not found, since it is not added
+        [Test]
+        public void CalculateSpeed_AirplaneIsNotFoundInList_Returns0()
+        {
+            string format = "yyyyMMddHHmmssfff";
+            DateTime plane1Time = DateTime.ParseExact("20151006213456001", format, CultureInfo.InvariantCulture);
+
+            var airplane1 = new Airplane("ACR101", 40000, 40000, 8000, plane1Time);
+            var airplane2 = new Airplane("ACR201", 40000, 40000, 8000, plane1Time);
+
+            List<Airplane> airplaneList = new List<Airplane>();
+
+            airplaneList.Add(airplane1);
+
+            //Unit under test/uut
+            Calculator calculator = new Calculator();
+
+            double actual = calculator.CalculateSpeed(airplane2);
+
+            Assert.AreEqual(0,actual);
+        }
+
+        [Test]
+        public void GetDirection_AirplaneIsNotFoundInList_Returns0()
+        {
+            string format = "yyyyMMddHHmmssfff";
+            DateTime plane1Time = DateTime.ParseExact("20151006213456001", format, CultureInfo.InvariantCulture);
+
+            var airplane1 = new Airplane("ACR101", 40000, 40000, 8000, plane1Time);
+            var airplane2 = new Airplane("ACR201", 40000, 40000, 8000, plane1Time);
+
+            List<Airplane> airplaneList = new List<Airplane>();
+
+            airplaneList.Add(airplane1);
+
+            //Unit under test/uut
+            Calculator calculator = new Calculator();
+
+            double actual = calculator.GetDirection(airplane2);
+
+            Assert.AreEqual(0, actual);
+        }
+
 
     }
 }
