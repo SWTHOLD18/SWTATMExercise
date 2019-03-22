@@ -26,14 +26,10 @@ namespace ATMExercise
                     
                     if(airplaneList[i].X_coordinate - airplaneList[j].X_coordinate < 5000 && airplaneList[i].X_coordinate - airplaneList[j].X_coordinate > -5000 && airplaneList[i].Y_coordinate - airplaneList[j].Y_coordinate < 5000 && airplaneList[i].Y_coordinate - airplaneList[j].Y_coordinate > -5000 && airplaneList[i].Altitude - airplaneList[j].Altitude < 300 && airplaneList[i].Altitude - airplaneList[j].Altitude > -300)
                     {
-                        con.Add(airplaneList[i].Tag);
-                        con.Add(airplaneList[j].Tag);
-                        con.Add(airplaneList[i].Timestamp.ToString());
+                        string timestr = airplaneList[i].Timestamp.ToString();
+                        string str = "SEPERATION WARNING " + airplaneList[i].Tag + ' ' + airplaneList[j].Tag + ' ' + timestr;
+                        con.Add(str);
 
-                    }
-                    else
-                    {
-                        con.Clear();
                     }
                 }
             }
@@ -45,11 +41,14 @@ namespace ATMExercise
             List<string> log = new List<string>();
             log.AddRange(ConditionDetected(airplaneList));
 
-            StreamWriter file = new StreamWriter(@"C:\Users\aliel\Desktop\IKT Noter og opgaver\4 semester\SWT\ATMexercise\ATM exercise\LogATM.txt");
+            StreamWriter file = new StreamWriter(@"C:\Users\olive\Documents\ATMlog.txt", true);
             foreach (string condition in log)
             {
                 file.WriteLine(condition);
+                System.Console.WriteLine(condition);
             }
+
+            file.Close();
         }
     }
 }
