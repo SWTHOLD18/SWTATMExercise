@@ -8,7 +8,7 @@ namespace ATMExercise
         {
             if(Airspace.WithInAirspace(airplane))
             {
-                System.Console.WriteLine("Airplane: Tag: {0} // X-coordinate: {1} // Y-coordinate: {2} // Altitude: {3} // Timestamp: {4} // Speed: {5} // Direction: {6}", 
+                System.Console.WriteLine("Airplane: Tag: {0}\t\t// X-coordinate: {1} m\t// Y-coordinate: {2} m\t// Altitude: {3} m\t// Timestamp: {4}\t// Speed: {5} m/s\t\t// Direction: {6}", 
                 airplane.Tag, airplane.X_coordinate, airplane.Y_coordinate, airplane.Altitude, airplane.Timestamp, calculator.CalculateSpeed(airplane),calculator.GetDirection(airplane));
             }
         }
