@@ -14,6 +14,7 @@ namespace ATMExercise
         public ICalculator calc = new Calculator();
         public IPrint printer = new Print();
         public IAirspace space = new Airspace();
+        public ISeperation seperation = new Seperation();
 
         public Decoder(ITransponderReceiver receiver)
         {
@@ -22,13 +23,14 @@ namespace ATMExercise
         }
 
         //fake inject constructer
-        public Decoder(ITransponderReceiver receiver, ICalculator calc, IPrint printer, IAirspace space)
+        public Decoder(ITransponderReceiver receiver, ICalculator calc, IPrint printer, IAirspace space, ISeperation seperation)
         {
             this.receiver = receiver;
             this.receiver.TransponderDataReady += ReceiverOnTransponderDataReady;
             this.calc = calc;
             this.printer = printer;
             this.space = space;
+            this.seperation = seperation;
         }
 
 
@@ -54,6 +56,7 @@ namespace ATMExercise
                 printer.PrintAirplaneWithSpeedAndDirection(airplane, calc, space);
             }
             calc.NewPositions(airplaneList);
+            seperation.updateCondition(airplaneList);
         }
     }
 }

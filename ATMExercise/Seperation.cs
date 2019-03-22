@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ATMExercise
 {
-    public class Seperation
+    public class Seperation : ISeperation
     {
        
         public Airplane Airplane { get; set; }

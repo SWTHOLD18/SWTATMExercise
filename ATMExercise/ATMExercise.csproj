@@ -62,6 +62,7 @@
     <Compile Include="Airspace.cs" />
     <Compile Include="Calculator.cs" />
     <Compile Include="Decoder.cs" />
+    <Compile Include="ISeperation.cs" />
     <Compile Include="IAirspace.cs" />
     <Compile Include="ICalculator.cs" />
     <Compile Include="IPoint.cs" />

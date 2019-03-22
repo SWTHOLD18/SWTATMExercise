@@ -20,6 +20,7 @@ namespace UnitTestATMExercise
         private Stubspace air;
         private MockPrint print;
         private MockCalculator calc;
+        private MockSeperation sep;
 
         [SetUp]
         public void setup()
@@ -28,7 +29,8 @@ namespace UnitTestATMExercise
             air = new Stubspace(0);
             print = new MockPrint();
             calc = new MockCalculator();
-            uut=new Decoder(_fakeTransponderReceiver, calc, print, air);
+            sep = new MockSeperation();
+            uut=new Decoder(_fakeTransponderReceiver, calc, print, air, sep);
         }
 
         [Test]
@@ -181,6 +183,43 @@ namespace UnitTestATMExercise
 
             string tester = uut.airplaneList[0].Tag;
             Assert.AreEqual(2, calc.newposCalls);
+        }
+
+        [Test]
+        public void testsepcalledoncewithoneevent()
+        {
+            List<string> testData = new List<string>();
+            testData.Add("pla245;50000;50000;500;20190320123500000");
+            testData.Add("pla119;50000;55000;900;20190320123500000");
+            testData.Add("pla893;10000;70000;1400;20190320123500000");
+
+            _fakeTransponderReceiver.TransponderDataReady
+                += Raise.EventWith(this, new RawTransponderDataEventArgs(testData));
+
+            Assert.AreEqual(1, sep.numCalls);
+        }
+
+        [Test]
+        public void testsepcalledtwicewithtwoevents()
+        {
+            List<string> testData = new List<string>();
+            testData.Add("pla245;50000;50000;500;20190320123500000");
+            testData.Add("pla119;50000;55000;900;20190320123500000");
+            testData.Add("pla893;10000;70000;1400;20190320123500000");
+
+            _fakeTransponderReceiver.TransponderDataReady
+                += Raise.EventWith(this, new RawTransponderDataEventArgs(testData));
+
+            testData.Clear();
+            testData.Add("pla119;50300;55200;800;20190320123500100");
+            testData.Add("pla245;50000;50000;500;20190320123500000");
+            testData.Add("pla893;10000;70000;1400;20190320123500000");
+
+            _fakeTransponderReceiver.TransponderDataReady
+                += Raise.EventWith(this, new RawTransponderDataEventArgs(testData));
+
+            string tester = uut.airplaneList[0].Tag;
+            Assert.AreEqual(2, sep.numCalls);
         }
     }
 }
