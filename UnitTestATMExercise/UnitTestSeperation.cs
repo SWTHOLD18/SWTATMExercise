@@ -20,24 +20,24 @@ namespace UnitTestATMExercise
         private List<Airplane> _airplaneList;
 
 
-        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR102", 41000, 41000, 8000, "20151006213456001", true)]
+        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR102", 41000, 41000, 8000, "20151006213456001", 3)]
 
-        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR102", 41000, 41000, 8000, "20151006213456001", true)]
+        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR102", 41000, 41000, 8000, "20151006213456001", 3)]
 
-        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR102", 41000, 41000, 800, "20151006213456001", false)]
+        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR102", 41000, 41000, 800, "20151006213456001", 0)]
 
-        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR102", 41000, 4100, 8000, "20151006213456001", false)]
+        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR102", 41000, 4100, 8000, "20151006213456001", 0)]
 
-        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR102", 4100, 41000, 8000, "20151006213456001", false)]
+        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", "ACR102", 4100, 41000, 8000, "20151006213456001", 0)]
 
-        public void seperationConditionTest(string tag, int x, int y, int altitude, string timestamp, string tag2, int x2, int y2, int altitude2, string timestamp2, bool expected)
+        public void seperationConditionTest(string tag, int x, int y, int altitude, string timestamp, string tag2, int x2, int y2, int altitude2, string timestamp2, int expected)
         {
             string format = "yyyyMMddHHmmssfff";
             DateTime plane1Time = DateTime.ParseExact(timestamp, format, CultureInfo.InvariantCulture);
             DateTime plane2Time = DateTime.ParseExact(timestamp2, format, CultureInfo.InvariantCulture);
 
             var airplane1 = new Airplane(tag, x, y, altitude, plane1Time);
-            var airplane2 = new Airplane(tag, x, y, altitude, plane2Time);
+            var airplane2 = new Airplane(tag2, x2, y2, altitude2, plane2Time);
 
             List<Airplane> airplaneList = new List<Airplane>();
 
@@ -46,9 +46,10 @@ namespace UnitTestATMExercise
 
             Seperation septest = new Seperation();
 
-            var actual = septest.ConditionDetected(airplaneList);
+            var strlist = septest.ConditionDetected(airplaneList);
+            var actual = strlist.Count;
 
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(expected, actual);
 
         }
 
