@@ -1,4 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ATMExercise
 {
@@ -39,6 +44,14 @@ namespace ATMExercise
             if(airspace.WithInAirspace(airplane))
             {
                 System.Console.WriteLine("Airplane: {0} is flying in direction: {1} degress (clockwise from North=0)", airplane.Tag, calculator.GetDirection(airplane));
+            }
+        }
+
+        public void PrintAirplaneWithSeperation(Airplane airplane, IAirspace airspace, Seperation seperation, List<Airplane> airplaneList)
+        {
+            if (airspace.WithInAirspace(airplane))
+            {
+                System.Console.WriteLine("{0}", seperation.ConditionDetected(airplaneList));
             }
         }
     } 
