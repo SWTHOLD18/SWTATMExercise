@@ -51,7 +51,11 @@ namespace ATMExercise
         {
             if (airspace.WithInAirspace(airplane))
             {
-                System.Console.WriteLine("{0}", seperation.ConditionDetected(airplaneList));
+                var print = new List<string>();
+                print.AddRange(seperation.ConditionDetected(airplaneList));
+                print.ForEach(Console.WriteLine);
+                //System.Console.WriteLine("{0}", seperation.ConditionDetected(airplaneList));
+                seperation.updateCondition(airplaneList);
             }
         }
     } 
