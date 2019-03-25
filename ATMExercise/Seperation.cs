@@ -41,7 +41,7 @@ namespace ATMExercise
             List<string> log = new List<string>();
             log.AddRange(ConditionDetected(airplaneList));
 
-            StreamWriter file = new StreamWriter(@"C:\Users\olive\Documents\ATMlog.txt", true);
+            StreamWriter file = new StreamWriter(@"ATMlog.txt", true);
             foreach (string condition in log)
             {
                 file.WriteLine(condition);
