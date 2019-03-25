@@ -10,11 +10,11 @@ namespace ATMExercise
     public class Seperation : ISeperation
     {
        
-        public Airplane Airplane { get; set; }
-        public void newTrack(Airplane airplane)
-        {
-            Airplane = airplane;
-        }
+        //public Airplane Airplane { get; set; }
+        //public void newTrack(Airplane airplane)
+        //{
+        //    Airplane = airplane;
+        //}
 
         public List<string> ConditionDetected(List<Airplane> airplaneList)
         {
