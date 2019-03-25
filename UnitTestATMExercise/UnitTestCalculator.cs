@@ -33,11 +33,6 @@ namespace UnitTestATMExercise
         // Plane not moved but 1 second has passed
         [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", 
             "ACR101", 40000, 40000, 8000, "20151006213457001", 0)]
-        /*
-        // Plane moved but 1 second has passed
-        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", 
-            "ACR101", 40100, 40000, 8000, "20151006213456001", 100)]
-        */
 
         // Plane moved 300 m on x-axis and 400 m in y-akis, distance moved = 500 m in two seconds, 40000 to 40300 and 40000 to 40400, expected 250 meter/second
         [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", 
@@ -88,11 +83,6 @@ namespace UnitTestATMExercise
         [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001",
             "ACR101", 20000, 40000, 8000, "20151006213457001", 270)]
 
-        /*
-        //Test plane going from X=40000 Y=40000 to X=40000 Y=40000 expected direction = same spot
-        [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001",
-            "ACR101", 40000, 40000, 8000, "20151006213457001", 0)]
-         */
         public void GetDirection_AirplaneFoundInList_ReturnsCorrectDirection(string plane1Tag, int plane1X, int plane1Y, int plane1Altitude,
             string plane1Timestamp,
             string plane2Tag, int plane2X, int plane2Y, int plane2Altitude, string plane2Timestamp, double expected)
